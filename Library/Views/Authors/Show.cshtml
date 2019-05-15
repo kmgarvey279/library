@@ -1,0 +1,33 @@
+@using Library.Models;
+
+<h1>Library</h1>
+<h2>Author: @Model["author"].GetName()</h2>
+<hr />
+
+@if (@Model["authorBooks"].Count != 0)
+{
+  <h4>Here are all the books written by this author:</h4>
+  <ul>
+    @foreach (var book in @Model["authorBooks"])
+    {
+      <li>@book.GetTitle()</li>
+    }
+  </ul>
+}
+
+<h4>Add a book:</h4>
+
+<form action='/authors/@Model["author"].GetId()/books/new' method='post'>
+  <label for='bookId'>Select a book</label>
+  <select id='bookId' name='bookId' type='text'>
+
+    @foreach (var book in @Model["allBooks"])
+    {
+      <option value='@book.GetId()'>@book.GetTitle()</option>
+    }
+
+  </select>
+  <button type='submit'>Add</button>
+</form>
+
+<p><a href="/">Home</a></p>
