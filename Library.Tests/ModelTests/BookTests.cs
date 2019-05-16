@@ -122,5 +122,75 @@ namespace Library.TestTools
     //Assert
     CollectionAssert.AreEqual(testList, savedAuthors);
     }
+
+    [TestMethod]
+    public void Test_AddPatron_AddsPatronToBook()
+    {
+    //Arrange
+    Book testBook = new Book("name");
+    testBook.Save();
+    Patron testPatron = new Patron("name", "#");
+    testPatron.Save();
+    Patron testPatron2 = new Patron("name", "#");
+    testPatron2.Save();
+
+    //Act
+    testBook.AddPatron(testPatron);
+    testBook.AddPatron(testPatron2);
+    List<Patron> result = testBook.GetPatrons();
+    List<Patron> testList = new List<Patron>{testPatron, testPatron2};
+
+    //Assert
+    CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void GetPatrons_ReturnsAllBookPatrons_PatronList()
+    {
+    //Arrange
+    Book testBook = new Book("name");
+    testBook.Save();
+    Patron testPatron1 = new Patron("name", "#");
+    testPatron1.Save();
+    Patron testPatron2 = new Patron("name", "#");
+    testPatron2.Save();
+
+    //Act
+    testBook.AddPatron(testPatron1);
+    List<Patron> savedPatrons = testBook.GetPatrons();
+    List<Patron> testList = new List<Patron> {testPatron1};
+
+    //Assert
+    CollectionAssert.AreEqual(testList, savedPatrons);
+    }
+
+    [TestMethod]
+    public void Delete_DeletesBookAssociationsWithAuthorsFromDatabase_BookList()
+    {
+      Book testBook = new Book("test");
+      testBook.Save();
+      Author testAuthor = new Author("test");
+      testAuthor.Save();
+      testBook.AddAuthor(testAuthor);
+      testBook.Delete();
+      List<Book> resultAuthorBooks = testAuthor.GetBooks();
+      List<Book> testAuthorBooks = new List<Book> {};
+      CollectionAssert.AreEqual(resultAuthorBooks, testAuthorBooks);
+    }
+
+    [TestMethod]
+    public void Delete_DeletesBookAssociationsWithPatronsFromDatabase_BookList()
+    {
+      Book testBook = new Book("test");
+      testBook.Save();
+      Patron testPatron = new Patron("test", "#");
+      testPatron.Save();
+      testBook.AddPatron(testPatron);
+      testBook.Delete();
+      List<Book> resultBookPatrons = testPatron.GetBooks();
+      List<Book> testBookPatrons = new List<Book> {};
+      CollectionAssert.AreEqual(resultBookPatrons, testBookPatrons);
+    }
+
   }
 }

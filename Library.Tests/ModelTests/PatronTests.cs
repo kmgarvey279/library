@@ -121,5 +121,19 @@ namespace Library.TestTools
       CollectionAssert.AreEqual(testList, result);
     }
 
+    [TestMethod]
+    public void Delete_DeletesPatronAssociationsFromDatabase_PatronList()
+    {
+      Patron testPatron = new Patron("test", "#");
+      testPatron.Save();
+      Book testBook = new Book("test");
+      testBook.Save();
+      testPatron.AddBook(testBook);
+      testPatron.Delete();
+      List<Patron> resultBookPatrons = testBook.GetPatrons();
+      List<Patron> testBookPatrons = new List<Patron> {};
+      CollectionAssert.AreEqual(resultBookPatrons, testBookPatrons);
+    }
+
   }
 }

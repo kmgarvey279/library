@@ -1,0 +1,34 @@
+@using Library.Models;
+
+<h1>Library</h1>
+<h2>Patron: @Model["selectedPatron"].GetName()</h2>
+<hr />
+<p>Phone Number:@Model["selectedPatron"].GetPhoneNumber()</p>
+
+@if (@Model["patronBooks"].Count != 0)
+{
+  <h4>This patron currently has the following books checked out:</h4>
+  <ul>
+    @foreach (Book book in @Model["patronBooks"])
+    {
+      <li>@book.GetTitle()</li>
+    }
+  </ul>
+}
+
+<h4>Check out a new book:</h4>
+
+<form action='/patrons/@Model["selectedPatron"].GetId()/books/new' method='post'>
+  <label for='bookId'>Select a book</label>
+  <select id='bookId' name='bookId' type='text'>
+    @foreach (var book in @Model["allBooks"])
+    {
+      <option value='@book.GetId()'>@book.GetTitle()</option>
+    }
+  </select>
+  <button type='submit'>Add</button>
+</form>
+
+<p><a href="/patrons/@Model["selectedPatron"].GetId()/edit">Edit this patron</a><p>
+<p><a href="/patrons/@Model["selectedPatron"].GetId()/delete">Delete this patron</a><p>
+<p><a href="/">Return to Main Page</a></p>

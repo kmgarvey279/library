@@ -204,6 +204,49 @@ namespace Library.Models
        }
      }
 
+     public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = new MySqlCommand("DELETE FROM patrons WHERE id = @PatronId; DELETE FROM checkouts WHERE patron_id = @PatronId;", conn);
+      MySqlParameter patronIdParameter = new MySqlParameter();
+      patronIdParameter.ParameterName = "@PatronId";
+      patronIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(patronIdParameter);
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+    public void Edit(string newName, string newPhoneNumber)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE patrons SET patron_name = @patronName WHERE id = @patronId; UPDATE patrons SET phone_number = @patronNumber WHERE id = @patronId;";
+      MySqlParameter patronNameParameter = new MySqlParameter();
+      patronNameParameter.ParameterName = "@patronName";
+      patronNameParameter.Value = newName;
+      cmd.Parameters.Add(patronNameParameter);
+      MySqlParameter patronNumberParameter = new MySqlParameter();
+      patronNumberParameter.ParameterName = "@patronNumber";
+      patronNumberParameter.Value = newPhoneNumber;
+      cmd.Parameters.Add(patronNumberParameter);
+      MySqlParameter patronIdParameter = new MySqlParameter();
+      patronIdParameter.ParameterName = "@patronId";
+      patronIdParameter.Value = this._id;
+      cmd.Parameters.Add(patronIdParameter);
+      cmd.ExecuteNonQuery();
+      _name = newName;
+      _phoneNumber = newPhoneNumber;
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
 
   }
 }

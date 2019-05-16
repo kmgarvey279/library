@@ -51,5 +51,12 @@ namespace Library.Controllers
       return RedirectToAction("Show", new { id = bookId });
     }
 
+    [HttpGet("/books/{bookId}/delete")]
+    public ActionResult Delete(int bookId)
+    {
+      Book newBook = Book.Find(bookId);
+      newBook.Delete();
+      return RedirectToAction("Index");
+    }
   }
 }

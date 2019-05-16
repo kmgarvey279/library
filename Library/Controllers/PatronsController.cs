@@ -51,5 +51,28 @@ namespace Library.Controllers
       return RedirectToAction("Show", new { id = patronId });
     }
 
+    [HttpGet("/patrons/{patronId}/delete")]
+    public ActionResult Delete(int patronId)
+    {
+      Patron newPatron = Patron.Find(patronId);
+      newPatron.Delete();
+      return RedirectToAction("Index");
+    }
+
+    [HttpGet("/patrons/{patronId}/edit")]
+    public ActionResult Edit(int patronId)
+    {
+      Patron newPatron = Patron.Find(patronId);
+      return View(newPatron);
+    }
+
+    [HttpPost("/patrons/{patronId}/edit")]
+    public ActionResult Update(int patronId, string name, string number)
+    {
+    Patron newPatron = Patron.Find(patronId);
+    newPatron.Edit(name, number);
+    return RedirectToAction("Index");
+    }
+
   }
 }

@@ -8,7 +8,6 @@
     @foreach (var patron in Model)
     {
       <li><a href='/patrons/@patron.GetId()'>@patron.GetName()</a></li>
-      <li><a href='/patrons/@patron.GetId()'>@patron.GetPhoneNumber()</a></li>
     }
   </ul>
 }

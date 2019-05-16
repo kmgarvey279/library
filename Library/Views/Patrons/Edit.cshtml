@@ -1,0 +1,14 @@
+<h1>Edit Patron Information</h1>
+<hr />
+
+<h1>Edit @Model.GetName()</h2>
+
+<form action="/patrons/@Model.GetId()/edit" method="post">
+  <label for="name">Patron Name:</label>
+  <input type="test" id="name" name="name" placeholder="@Model.GetName()" required>
+  <label for="number">Patron Phone Number:</label>
+  <input type="text" id="number" name="number" placeholder="@Model.GetPhoneNumber()" required>
+  <button type="submit">Edit</button>
+</form>
+
+<p><a href="/">Home</a></p>

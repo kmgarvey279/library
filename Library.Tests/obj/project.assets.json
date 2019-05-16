@@ -13634,11 +13634,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/Library-Solution/Library.Tests/Library.Tests.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/Library.Solution/Library.Tests/Library.Tests.csproj",
       "projectName": "Library.Tests",
-      "projectPath": "/Users/Guest/Desktop/Library-Solution/Library.Tests/Library.Tests.csproj",
+      "projectPath": "/Users/Guest/Desktop/Library.Solution/Library.Tests/Library.Tests.csproj",
       "packagesPath": "/Users/Guest/.nuget/packages/",
-      "outputPath": "/Users/Guest/Desktop/Library-Solution/Library.Tests/obj/",
+      "outputPath": "/Users/Guest/Desktop/Library.Solution/Library.Tests/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -13655,8 +13655,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/Users/Guest/Desktop/Library-Solution/Library/Library.csproj": {
-              "projectPath": "/Users/Guest/Desktop/Library-Solution/Library/Library.csproj"
+            "/Users/Guest/Desktop/Library.Solution/Library/Library.csproj": {
+              "projectPath": "/Users/Guest/Desktop/Library.Solution/Library/Library.csproj"
             }
           }
         }

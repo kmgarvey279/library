@@ -15,10 +15,8 @@
   </ul>
 }
 
-<h4>Add an author to this book:</h4>
-
-<form action='/books/@Model["selectedBook"].GetId()/categories/new' method='post'>
-  <label for='authorId'>Select an author</label>
+<form action='/books/@Model["selectedBook"].GetId()/authors/new' method='post'>
+  <label for='authorId'>Add an author</label>
   <select id='authorId' name='authorId' type='text'>
     @foreach (var author in @Model["allAuthors"])
     {
@@ -28,4 +26,6 @@
   <button type='submit'>Add</button>
 </form>
 
+<p><a href="/authors/new">Add new author to catalog</a></p>
 <p><a href="/">Return to Main Page</a></p>
+<p><a href="/books/@Model["selectedBook"].GetId()/delete">Delete this book</a><p>

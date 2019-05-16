@@ -12108,11 +12108,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/Library-Solution/Library/Library.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/Library.Solution/Library/Library.csproj",
       "projectName": "Library",
-      "projectPath": "/Users/Guest/Desktop/Library-Solution/Library/Library.csproj",
+      "projectPath": "/Users/Guest/Desktop/Library.Solution/Library/Library.csproj",
       "packagesPath": "/Users/Guest/.nuget/packages/",
-      "outputPath": "/Users/Guest/Desktop/Library-Solution/Library/obj/",
+      "outputPath": "/Users/Guest/Desktop/Library.Solution/Library/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
